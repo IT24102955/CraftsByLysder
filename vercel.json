@@ -7,14 +7,17 @@
     }
   ],
   "routes": [
+
     {
-      "src": "/stinson/(.*\\.(css|js|jpg|png|gif|svg|woff|ttf|eot|ico))",
-      "dest": "/stinson/$1"
+      "src": "/(about|contact|customize|gemstones|payment|shipping|return|terms|error-404)",
+      "dest": "/stinson/$1.html"
     },
+
     {
       "src": "/(.*\\.(css|js|jpg|png|gif|svg|woff|ttf|eot|ico))",
       "dest": "/stinson/$1"
     },
+
     {
       "src": "/(.*)",
       "dest": "/stinson/index.html"
