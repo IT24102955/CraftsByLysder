@@ -156,17 +156,19 @@
 								<hr />
 							</div>
 							<div class="custom-input">
-								<form id="contact-form" action="https://whizthemes.com/mail-php/other/mail.php">
-									<input type="text" name="con_name" placeholder="Name" />
-									<input type="text" name="con_email" placeholder="Email Address" />
-									<input type="text" name="con_subject" placeholder="Subject" />
+								<form id="contact-form" action="https://formspree.io/f/xzzjbllr" method="POST">
+									<input type="text" name="name" placeholder="Name" required />
+									<input type="email" name="email" placeholder="Email Address" required />
+									<input type="text" name="subject" placeholder="Subject" required />
 									<div class="review-mess">
-										<textarea rows="4" placeholder="Message" name="con_message"></textarea>
+										<textarea rows="4" placeholder="Message" name="message" required></textarea>
 									</div>
 									<div class="submit-text">
 										<button type="submit">send message</button>
 										<p class="form-message"></p>
 									</div>
+								</form>
+							</div>
 								</form>
 							</div>
 						</div>
@@ -314,5 +316,22 @@
         <script src="js/plugins.js"></script>
 		<!-- main js -->
         <script src="js/main.js"></script>
+
+		<script>
+			document.getElementById('contact-form').addEventListener('submit', function(e) {
+				// Optional: Add loading state
+				const submitBtn = this.querySelector('button[type="submit"]');
+				const originalText = submitBtn.textContent;
+				submitBtn.textContent = 'Sending...';
+				submitBtn.disabled = true;
+
+				// Re-enable after 3 seconds (Formspree will redirect)
+				setTimeout(() => {
+					submitBtn.textContent = originalText;
+					submitBtn.disabled = false;
+				}, 3000);
+			});
+		</script>
+
     </body>
 </html>
