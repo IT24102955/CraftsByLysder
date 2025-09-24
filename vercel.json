@@ -2,11 +2,15 @@
   "version": 2,
   "builds": [
     {
-      "src": "stinson/index.html",
+      "src": "stinson/**/*",
       "use": "@vercel/static"
     }
   ],
   "routes": [
+    {
+      "src": "/(.*\\.(css|js|jpg|png|gif|svg|woff|ttf))",
+      "dest": "/stinson/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "/stinson/index.html"
